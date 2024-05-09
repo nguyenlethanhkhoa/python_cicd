@@ -5,4 +5,8 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
+      # This step checks out a copy of your repository.
+      - name: My first step - check out repository
+        uses: actions/checkout@v4
+      # This step references the directory that contains the action.
       - uses: ./.github/actions/black_linter
