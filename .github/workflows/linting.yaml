@@ -5,4 +5,4 @@ jobs:
   linting:
     runs-on: ubuntu-latest
     steps:
-      - uses: ./.github/actions/black_linter/action.yaml
+      - uses: ./.github/actions/black_linter
