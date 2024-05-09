@@ -20,5 +20,5 @@ branding:
 runs:
   using: "composite"
   steps:
-    - run: echo "Black Linting is called"
-      shell: bash
+    - id: action_black
+      uses: rickstaa/action-black@v1
