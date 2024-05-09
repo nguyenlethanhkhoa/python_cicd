@@ -18,5 +18,7 @@ branding:
   color: "black"
   icon: "check-circle"
 runs:
+  using: "composite"
   steps:
     - run: echo "Black Linting is called"
+      shell: bash
