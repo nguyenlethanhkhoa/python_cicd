@@ -1,5 +1,5 @@
 name: Python Linting Workflow
-run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+run-name: Black linter is working 🚀
 on: [push]
 jobs:
   linting:
