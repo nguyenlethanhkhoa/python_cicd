@@ -12,5 +12,7 @@ jobs:
 #      - name: Grant execute permission for entrypoint.sh file
 #        using: "docker"
 #        image: "./black/Dockerfile"
+      - name: Run ls -l command
+        run: ls -l
       - name: Run Black Linter from repo
         uses: ./.github/actions/black_linter
