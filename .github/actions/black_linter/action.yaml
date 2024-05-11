@@ -20,5 +20,8 @@ branding:
 runs:
   using: "composite"
   steps:
-    - id: action_black
-      uses: rickstaa/action-black@v1
+#    - id: action_black
+#      uses: rickstaa/action-black@v1
+    - id: Docker Black Validator
+      using: "docker"
+      image: "Dockerfile"
