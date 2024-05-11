@@ -18,10 +18,9 @@ branding:
   color: "black"
   icon: "check-circle"
 runs:
-  using: "composite"
-  steps:
+#  using: "composite"
+#  steps:
 #    - id: action_black
 #      uses: rickstaa/action-black@v1
-    - id: Docker Black Validator
-      using: "docker"
-      image: "Dockerfile"
+  using: "docker"
+  image: "Dockerfile"
