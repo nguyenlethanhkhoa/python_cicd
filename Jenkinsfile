@@ -4,9 +4,6 @@ pipeline {
     stages {
         stage('Example') {
             agent any
-            options {
-                timeout(time: 1, unit: 'SECONDS')
-            }
             steps {
                 echo 'Hello World'
                 echo 'Step 2'
