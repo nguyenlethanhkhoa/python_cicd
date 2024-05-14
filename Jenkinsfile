@@ -17,6 +17,9 @@ pipeline {
         }
         stage('Do something') {
             agent any
+            options {
+                timeout(time: 1, unit: 'SECONDS')
+            }
             steps {
                 echo 'Do something'
                 echo 'Finish'
