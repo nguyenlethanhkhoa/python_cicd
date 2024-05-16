@@ -19,3 +19,9 @@ services:
         command: "tunnel --no-autoupdate run"
         environment:
             - TUNNEL_TOKEN=eyJhIjoiNTI5MGQxMDZkNjE5NjliY2E4YTZlOGM4ODc2OTJlYmIiLCJ0IjoiYjJhMTg0MTAtYTRjYy00YWEyLWEzZjctZDUyNjJiMDBlZDRiIiwicyI6Ik1qUXdOV0ptT0RjdE4yTmlPUzAwTVRnNUxXSXpOemN0TnpBek5USmlORE5rTWpWaCJ9
+    registry:
+        image: registry:2.8.3
+        container_name: registry
+        hostname: registry
+        ports:
+            - "0.0.0.0:5000:5000"
