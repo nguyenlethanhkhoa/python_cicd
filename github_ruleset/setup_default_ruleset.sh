@@ -24,4 +24,5 @@ echo ''
 read -p "Which repo do you choose? " repo
 export REPO=$repo
 
-
+create_develop_branch_protection_rules
+create_main_branch_protection_rules

@@ -8,14 +8,14 @@ function get_user_repos {
     jq -r '.[] | .name' ./.temp/repos.json
 }
 
-function create_develop_brand_protection_rules {
+function create_develop_branch_protection_rules {
     curl --location "https://api.github.com/repos/${USERNAME}/${REPO}/rulesets" \
         --header 'Accept: application/vnd.github+json' \
         --header 'X-GitHub-Api-Version: 2022-11-28' \
         --header 'Content-Type: application/json' \
         --header "Authorization: Bearer ${TOKEN}" \
         --data '{
-        "name": "develop brand protection rules",
+        "name": "develop branch protection rules",
         "target": "branch",
         "enforcement": "active",
         "bypass_actors": [],
@@ -61,60 +61,60 @@ function create_develop_brand_protection_rules {
     }'
 }
 
-function create_main_brand_protection_rules {
+function create_main_branch_protection_rules {
    curl --location "https://api.github.com/repos/${USERNAME}/${REPO}/rulesets" \
         --header 'Accept: application/vnd.github+json' \
         --header 'X-GitHub-Api-Version: 2022-11-28' \
         --header 'Content-Type: application/json' \
         --header "Authorization: Bearer ${TOKEN}" \
         --data '{
-    "name": "main brand protection rules",
-    "target": "branch",
-    "enforcement": "active",
-    "bypass_actors": [],
-    "conditions": {
-        "ref_name": {
-            "include": [
-                "refs/heads/main"
-            ],
-            "exclude": []
-        }
-    },
-    "rules": [
-        {
-            "type": "deletion",
-            "parameters": {}
-        },
-        {
-            "type": "non_fast_forward",
-            "parameters": {}
-        },
-        {
-            "type": "pull_request",
-            "parameters": {
-                "require_code_owner_review": false,
-                "require_last_push_approval": true,
-                "dismiss_stale_reviews_on_push": false,
-                "required_approving_review_count": 1,
-                "authorized_dismissal_actors_only": false,
-                "required_review_thread_resolution": false,
-                "ignore_approvals_from_contributors": false
-            }
-        },
-        {
-            "type": "required_status_checks",
-            "parameters": {
-                "required_status_checks": [
-                    {
-                        "context": "rc_test"
-                    },
-                    {
-                        "context": "rc_deploy"
-                    }
+        "name": "main branch protection rules",
+        "target": "branch",
+        "enforcement": "active",
+        "bypass_actors": [],
+        "conditions": {
+            "ref_name": {
+                "include": [
+                    "refs/heads/main"
                 ],
-                "strict_required_status_checks_policy": true
+                "exclude": []
             }
-        }
-    ]
-}'
+        },
+        "rules": [
+            {
+                "type": "deletion",
+                "parameters": {}
+            },
+            {
+                "type": "non_fast_forward",
+                "parameters": {}
+            },
+            {
+                "type": "pull_request",
+                "parameters": {
+                    "require_code_owner_review": false,
+                    "require_last_push_approval": true,
+                    "dismiss_stale_reviews_on_push": false,
+                    "required_approving_review_count": 1,
+                    "authorized_dismissal_actors_only": false,
+                    "required_review_thread_resolution": false,
+                    "ignore_approvals_from_contributors": false
+                }
+            },
+            {
+                "type": "required_status_checks",
+                "parameters": {
+                    "required_status_checks": [
+                        {
+                            "context": "rc_test"
+                        },
+                        {
+                            "context": "rc_deploy"
+                        }
+                    ],
+                    "strict_required_status_checks_policy": true
+                }
+            }
+        ]
+    }'
 }
