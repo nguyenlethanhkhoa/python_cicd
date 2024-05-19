@@ -1,6 +1,12 @@
 pipeline {
     agent any
 
+    triggers {
+        githubPullRequest(
+            useGitHubHooks: true // Enable GitHub webhook integration
+        )
+    }
+
     stages {
         stage('Example') {
             agent any
